@@ -577,6 +577,7 @@
     Every project below is <strong>live and clickable</strong>.
     Scroll down, pick one, and it'll open in a new tab.
   </p>
+  <div class="modal-actions" id="supportLinks" style="margin-top:28px;"><!-- filled by JS from SUPPORT_LINKS --></div>
   <div class="scroll-cue">
     <span>Scroll</span>
     <span class="line"></span>
@@ -696,6 +697,25 @@
      (b) live in-browser via Admin Mode (click the † bottom-right),
          then use "Export Config" to pull your changes back into this file.
    ============================================================ */
+  /* ============================================================
+     SUPPORT / CONNECT LINKS — shown as buttons under the hero text.
+     >>> EDIT THESE FOUR VALUES WITH YOUR REAL LINKS <<<
+     Leave a value as "" (empty string) to hide that button entirely.
+     cashtag should be just the handle, no $ and no URL, e.g. "yourname"
+     for Cash App, or "yourname" for Venmo — the code builds the full
+     URL for you. For everything else, paste the full https:// URL.
+  ============================================================ */
+  const SUPPORT_LINKS = {
+    cashapp:  "7875barbeauski",  // -> https://cash.app/$7875barbeauski
+    venmo:    "",                // e.g. "yourname"  ->  becomes https://venmo.com/yourname
+    youtube:  "https://youtube.com/@williambarbeaubilly?si=Scyz4xKiHe7JR1t8",
+    facebook: "https://www.facebook.com/share/1D8qg6RvCV/",
+    github:   "https://github.com/beyond-the-prompt",
+    email:    "Barbeaubilly@gmail.com", // becomes a mailto: link
+    linktree: "",   // full URL, e.g. "https://linktr.ee/yourname"
+    website:  ""    // full URL to a main site/portfolio, if you have one
+  };
+
   const BUILD_DATA = [
     // ---- Deathsong-verse builds ----
     // NOTE: I could only confirm one live URL (Deathsong Frequency, from the
@@ -708,19 +728,18 @@
     // That beats opening the edit form 17 separate times.
     { id:"ritual", icon:"🕯️", title:"Ritual", tag:"Deathsong", desc:"Fill in a real description here.", url:"#" },
     { id:"creator-studio", icon:"🎛️", title:"Creator Studio", tag:"Tool", desc:"Storyboard + video editor: build scenes from prompts/reference images, create consistent @name characters, then assemble/split/reorder clips into an exported timeline.", url:"https://beyond-the-prompt.github.io/BREAKING-PROMPTs/" },
-    { id:"deathsong-frequency", icon:"🜂", title:"Deathsong Frequency", tag:"Media", desc:"Mixed audio + YouTube Shorts ritual player. Play/pause, speed control, fullscreen, PIP, and a ritual library.", url:"https://fancy-fudge-7ab662.netlify.app/" },
+    { id:"deathsong-frequency", icon:"🜂", title:"Deathsong Frequency", tag:"Media", desc:"Featured build — video and music library of full episodes and original songs, all written and directed by Billy Barbeau.", url:"https://fancy-fudge-7ab662.netlify.app/" },
     { id:"prompt-mindset", icon:"🧠", title:"Prompt:Mindset", tag:"Tool", desc:"\"Beyond The Prompt\" field guide — a mindset/technique course on directing AI tools deliberately, with a full guide and a completion certificate.", url:"https://beyond-the-prompt.github.io/BREAKING-PROMPT/" },
-    { id:"mediastitcher", icon:"🎞️", title:"MediaStitcher", tag:"Tool", desc:"Image and video editing/stitching tool. Note: there's also a mirror build at bearyhxrrro.lastapp.dev — same app, confirm which is your active deploy.", url:"https://bearya1gw7a.lastapp.dev/" },
+    { id:"mediastitcher", icon:"🎞️", title:"MediaStitcher", tag:"Tool", desc:"Professional image and video editing tool.", url:"https://bearyhxrrro.lastapp.dev/" },
     { id:"prison-art", icon:"🖤", title:"Prison Art", tag:"Art", desc:"Fill in a real description here.", url:"https://prison-art.netlify.app/" },
     { id:"sinful-swipe", icon:"🗡️", title:"Sinful Swipe Delight", tag:"App", desc:"Fill in a real description here — name was cut off on your home screen, double check the full title.", url:"https://beyond-the-prompt.github.io/SIN-SWIPE/" },
     { id:"barbanzo-scr", icon:"⚙️", title:"BARBANZO SCRIPT", tag:"Tool", desc:"AI image-prompt scripting system (by Michael Sanzo & William Barbeau) — beginner mode with structured fields (subject/camera/lighting/etc.) or expert raw-script mode, plus Groq enhancement and a saved-script vault.", url:"https://beyond-the-prompt.github.io/sanzoscript/" },
-    { id:"jam-house", icon:"🎵", title:"Jam_House", tag:"Music", desc:"Fill in a real description here.", url:"#" },
+    { id:"jam-house", icon:"🎵", title:"Jam House", tag:"Music", desc:"Music app.", url:"https://lucky-buttercream-6a714f.netlify.app/" },
     { id:"good-celly", icon:"✦", title:"Good Celly", tag:"App", desc:"Fill in a real description here.", url:"#" },
     { id:"algorithm-netlify", icon:"⚙️", title:"algorithm.netlify", tag:"Tool", desc:"Fill in a real description here.", url:"#" },
-    { id:"deathsong-sl", icon:"💀", title:"DEATHSONG SL...", tag:"Deathsong", desc:"Likely \"Deathsong Frequency Slots\" — confirm full title.", url:"https://beyond-the-prompt.github.io/Deathsong-Frequency-sSlots/" },
+    { id:"deathsong-sl", icon:"💀", title:"Deathsong Frequency Slots", tag:"Deathsong", desc:"Fill in a real description here.", url:"https://beyond-the-prompt.github.io/Deathsong-Frequency-sSlots/" },
     { id:"deathsong-academy", icon:"📓", title:"Deathsong Academy", tag:"Education", desc:"Fill in a real description here.", url:"#" },
-    { id:"sanzoskript", icon:"🗡️", title:"SaNzOSkRiPt", tag:"Tool", desc:"Fill in a real description here.", url:"#" },
-    { id:"gmunnydrum", icon:"🥁", title:"GmunnyDRUM", tag:"Music", desc:"Drum sequencer.", url:"https://gmoneydrumsequencer.netlify.app/" },
+    { id:"gmunnydrum", icon:"🥁", title:"GmunnyDRUM", tag:"Music", desc:"Drum sequencer with pads.", url:"https://gmoneydrumsequencer.netlify.app/" },
     { id:"dsf-hub-player", icon:"▶️", title:"DSF HUB Player", tag:"Media", desc:"Fill in a real description here.", url:"#" },
     { id:"trample-house", icon:"🏚️", title:"Trample House", tag:"18+", desc:"Adult-content parody storefront (explicit/NSFW). You'll want to write your own description for this one and probably keep it off any public/shared version of this page.", url:"https://beyond-the-prompt.github.io/BREAKING-THE-PROMPT-WHORE-DASH-DELIVERY/" },
 
@@ -728,7 +747,13 @@
     { id:"wellsync-ai", icon:"🩵", title:"WellSync AI", tag:"Wellness", desc:"Fill in a real description here.", url:"#" },
     { id:"healthguardian", icon:"❤️‍🩹", title:"HealthGuardian", tag:"Wellness", desc:"Fill in a real description here.", url:"#" },
     { id:"heart-rate-monitor", icon:"❤️", title:"Heart Rate Monitor", tag:"Wellness", desc:"Fill in a real description here.", url:"#" },
-    { id:"joanie", icon:"🌿", title:"Joanie: Personal Assistant", tag:"Wellness", desc:"Fill in a real description here — name was cut off, double check the full title.", url:"#" }
+    { id:"joanie", icon:"🌿", title:"Joanie: Personal Assistant", tag:"Wellness", desc:"Fill in a real description here — name was cut off, double check the full title.", url:"#" },
+
+    // ---- Added from LINKS_TO_APPS.txt (verified working, duplicates removed) ----
+    { id:"nimble-kleicha", icon:"🎓", title:"Nimble Kleicha", tag:"Education", desc:"AI academic course.", url:"https://nimble-kleicha-0056ec.netlify.app/" },
+    { id:"eclectic-gnome", icon:"🎮", title:"Eclectic Gnome", tag:"Game", desc:"Tic-tac-toe AI trainer — the AI learns move confidence per board position through repeated games.", url:"https://eclectic-gnome-36c654.netlify.app/" },
+    { id:"luv-lei-ruins", icon:"🌙", title:"Luv Lei Ruins", tag:"18+", desc:"Fill in a real description here — 18+ landing page linking out to your other adult-content builds.", url:"https://lei-ruins.github.io/Luv-Lei-Ruins/" },
+    { id:"lei-ruins-hub", icon:"🏛️", title:"Lei Ruins Official Hub", tag:"18+", desc:"Fill in a real description here — private/exclusive members hub with a live-stream and gallery area.", url:"https://lei-ruins.github.io/Lei-Ruins-Official-Hub/" }
   ];
 
   /* ============================================================
@@ -1006,9 +1031,38 @@
     showToast._timer = setTimeout(() => t.classList.remove('show'), 2400);
   }
 
+  /* ============================================================
+     Renders the hero support/connect buttons from SUPPORT_LINKS.
+     Any entry left as "" above is simply skipped — no empty buttons.
+  ============================================================ */
+  function renderSupportLinks(){
+    const wrap = document.getElementById('supportLinks');
+    wrap.innerHTML = '';
+    const items = [];
+    if (SUPPORT_LINKS.cashapp)  items.push({ label:'💵 Cash App', href:`https://cash.app/$${SUPPORT_LINKS.cashapp}` });
+    if (SUPPORT_LINKS.venmo)    items.push({ label:'💳 Venmo',    href:`https://venmo.com/${SUPPORT_LINKS.venmo}` });
+    if (SUPPORT_LINKS.youtube)  items.push({ label:'▶️ YouTube',  href: SUPPORT_LINKS.youtube });
+    if (SUPPORT_LINKS.facebook) items.push({ label:'📘 Facebook', href: SUPPORT_LINKS.facebook });
+    if (SUPPORT_LINKS.github)   items.push({ label:'🐙 GitHub',   href: SUPPORT_LINKS.github });
+    if (SUPPORT_LINKS.email)    items.push({ label:'✉️ Email',    href: `mailto:${SUPPORT_LINKS.email}` });
+    if (SUPPORT_LINKS.linktree) items.push({ label:'🔗 Linktree', href: SUPPORT_LINKS.linktree });
+    if (SUPPORT_LINKS.website)  items.push({ label:'🌐 Website',  href: SUPPORT_LINKS.website });
+
+    items.forEach(item => {
+      const a = document.createElement('a');
+      a.className = 'btn btn-ghost';
+      a.textContent = item.label;
+      a.href = item.href;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      wrap.appendChild(a);
+    });
+  }
+
   // initial paint
   renderFilters();
   renderGrid();
+  renderSupportLinks();
 
   /* ============================================================
      5d. PARTICLE FX — drifting embers on a canvas behind everything.
